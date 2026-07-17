@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SMIT Student Portal - Dashboard</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            slateBg: '#f8fafc'
+          }
+        }
+      }
+    };
+  </script>
+
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+  <style>
+    html,
+    body {
+      height: 100%;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    }
+
+    body {
+      background-color: #f8fafc;
+      transition: background-color 0.25s ease, color 0.25s ease;
+    }
+
+    body.dark {
+      background-color: #0f172a;
+    }
+
+    .fade-in {
+      animation: fadeIn 0.15s ease;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-4px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+
+<body class="min-h-screen text-slate-800 dark:text-slate-100">
+
+  <div class="max-w-lg mx-auto px-5 pt-6 pb-28">
+
+    <!-- Header -->
+    <header class="flex items-center justify-between mb-6">
+      <img src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?w=160&h=160&fit=crop&crop=faces"
+        alt="Student avatar" class="w-14 h-14 rounded-full object-cover ring-4 ring-blue-400" />
+
+      <div class="flex items-center gap-3">
+        <button id="themeToggle"
+          class="w-11 h-11 flex items-center justify-center rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors duration-150 shadow-sm"
+          aria-label="Toggle theme">
+          <i data-lucide="moon" id="themeIcon" class="w-5 h-5 text-slate-600 dark:text-slate-200"></i>
+        </button>
+
+        <button
+          class="flex items-center gap-2 px-4 h-11 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors duration-150 shadow-sm font-medium text-sm">
+          <i data-lucide="message-square" class="w-4 h-4"></i>
+          Feedback
+        </button>
+      </div>
+    </header>
+
+    <!-- Search + Filter -->
+    <div class="flex items-center gap-3 mb-6">
+      <div class="relative flex-1">
+        <input type="text" placeholder="Search Course"
+          class="w-full h-14 pl-5 pr-12 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-base placeholder-slate-400 outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-100 dark:focus:ring-blue-900 transition-all duration-150" />
+        <i data-lucide="search" class="w-5 h-5 text-slate-400 absolute right-4 top-1/2 -translate-y-1/2"></i>
+      </div>
+
+      <div class="relative">
+        <button id="filterBtn"
+          class="flex items-center gap-2 h-14 px-5 rounded-2xl border-2 border-slate-800 dark:border-slate-300 bg-white dark:bg-slate-800 font-medium text-sm whitespace-nowrap transition-colors duration-150">
+          <span id="filterLabel">ENROLLED</span>
+          <i data-lucide="chevron-down" id="filterChevron" class="w-4 h-4 transition-transform duration-200"></i>
+        </button>
+
+        <div id="filterMenu"
+          class="hidden fade-in absolute right-0 mt-2 w-40 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl shadow-lg overflow-hidden z-20">
+          <button
+            class="filter-option w-full text-left px-4 py-3 text-sm hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors duration-150"
+            data-value="All">All</button>
+          <button
+            class="filter-option w-full text-left px-4 py-3 text-sm hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors duration-150"
+            data-value="ENROLLED">ENROLLED</button>
+          <button
+            class="filter-option w-full text-left px-4 py-3 text-sm hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors duration-150"
+            data-value="FAILED">FAILED</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Course Card -->
+    <div
+      class="rounded-3xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-200">
+
+      <!-- Card header -->
+      <div class="bg-blue-50 dark:bg-slate-700/40 px-6 py-6 flex items-center justify-between">
+        <h2 class="text-2xl font-bold text-slate-900 dark:text-white truncate pr-3">
+          Modern Web Development
+        </h2>
+        <span
+          class="shrink-0 px-4 py-1.5 rounded-full border border-blue-300 text-blue-500 dark:text-blue-300 dark:border-blue-400 text-sm font-semibold bg-white dark:bg-slate-800">
+          ENROLLED
+        </span>
+      </div>
+
+      <!-- Progress -->
+      <div class="px-6 pt-6">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-lg text-slate-500 dark:text-slate-300">Progress</span>
+          <span class="text-lg font-medium text-slate-600 dark:text-slate-200">32% Completed</span>
+        </div>
+        <div class="w-full h-2.5 rounded-full bg-slate-200 dark:bg-slate-600 overflow-hidden">
+          <div class="h-full rounded-full bg-green-500" style="width: 32%"></div>
+        </div>
+      </div>
+
+      <!-- Details grid -->
+      <div class="px-6 pt-6 grid grid-cols-2 gap-y-5 gap-x-3 text-slate-700 dark:text-slate-200">
+        <div class="flex items-center gap-2.5">
+          <i data-lucide="hash" class="w-5 h-5 text-slate-400 shrink-0"></i>
+          <span class="text-lg">Batch: <span class="text-slate-500 dark:text-slate-300">2</span></span>
+        </div>
+        <div class="flex items-center gap-2.5">
+          <i data-lucide="award" class="w-5 h-5 text-slate-400 shrink-0"></i>
+          <span class="text-lg">Roll: <span class="text-slate-500 dark:text-slate-300">000123</span></span>
+        </div>
+        <div class="flex items-center gap-2.5 min-w-0">
+          <i data-lucide="school" class="w-5 h-5 text-slate-400 shrink-0"></i>
+          <span class="text-lg truncate">Campus: <span
+              class="text-slate-500 dark:text-slate-300">Saylani...</span></span>
+        </div>
+        <div class="flex items-center gap-2.5">
+          <i data-lucide="map-pin" class="w-5 h-5 text-slate-400 shrink-0"></i>
+          <span class="text-lg">City: <span class="text-slate-500 dark:text-slate-300">Sukkur</span></span>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="px-6 pt-6 pb-6">
+        <button id="viewDetailsBtn"
+          class="w-full h-14 flex items-center justify-center gap-2 rounded-2xl border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-800 font-semibold text-lg hover:bg-slate-50 dark:hover:bg-slate-700 active:scale-[0.98] transition-all duration-150">
+          <i data-lucide="mouse-pointer-click" class="w-5 h-5"></i>
+          View Details
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Bottom Nav -->
+  <nav
+    class="fixed bottom-0 left-0 right-0 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-700 pt-3 pb-2">
+    <div class="max-w-lg mx-auto flex flex-col items-center">
+      <button
+        class="w-14 h-14 rounded-full bg-blue-600 hover:bg-blue-700 flex items-center justify-center shadow-md transition-colors duration-150 active:scale-95">
+        <i data-lucide="home" class="w-6 h-6 text-white"></i>
+      </button>
+      <span class="mt-1 text-sm font-medium text-slate-700 dark:text-slate-200">Home</span>
+    </div>
+  </nav>
+
+  <script>
+    lucide.createIcons();
+
+    // Theme toggle
+    const themeToggle = document.getElementById('themeToggle');
+    const themeIcon = document.getElementById('themeIcon');
+
+    themeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark');
+      const isDark = document.body.classList.contains('dark');
+      themeIcon.setAttribute('data-lucide', isDark ? 'sun' : 'moon');
+      lucide.createIcons();
+    });
+
+    // Filter dropdown
+    const filterBtn = document.getElementById('filterBtn');
+    const filterMenu = document.getElementById('filterMenu');
+    const filterLabel = document.getElementById('filterLabel');
+    const filterChevron = document.getElementById('filterChevron');
+    const filterOptions = document.querySelectorAll('.filter-option');
+
+    filterBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      filterMenu.classList.toggle('hidden');
+      filterChevron.style.transform = filterMenu.classList.contains('hidden')
+        ? 'rotate(0deg)'
+        : 'rotate(180deg)';
+    });
+
+    filterOptions.forEach((opt) => {
+      opt.addEventListener('click', () => {
+        filterLabel.textContent = opt.dataset.value;
+        filterMenu.classList.add('hidden');
+        filterChevron.style.transform = 'rotate(0deg)';
+      });
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!filterMenu.contains(e.target) && !filterBtn.contains(e.target)) {
+        filterMenu.classList.add('hidden');
+        filterChevron.style.transform = 'rotate(0deg)';
+      }
+    });
+
+    // View Details demo action
+    document.getElementById('viewDetailsBtn').addEventListener('click', () => {
+      window.open("course-details.html", "_self");
+    });
+  </script>
+
+</body>
+
+</html>

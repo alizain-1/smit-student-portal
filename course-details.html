@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SMIT Student Portal - Course Details</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { darkMode: 'class' };
+  </script>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+  <style>
+    html,
+    body {
+      height: 100%;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    }
+
+    body {
+      background-color: #f8fafc;
+      transition: background-color .25s ease, color .25s ease;
+    }
+
+    body.dark {
+      background-color: #0f172a;
+    }
+
+    .fade-in {
+      animation: fadeIn .18s ease;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(6px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .tooltip-pop {
+      animation: popIn .15s ease;
+    }
+
+    @keyframes popIn {
+      from {
+        opacity: 0;
+        transform: translateY(4px) scale(.95);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+  </style>
+</head>
+
+<body class="min-h-screen text-slate-800 dark:text-slate-100">
+
+  <div class="max-w-lg mx-auto px-5 pt-6 pb-28">
+
+    <!-- Header -->
+    <header class="flex items-center justify-between mb-6">
+      <img src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?w=160&h=160&fit=crop&crop=faces"
+        alt="Student avatar" class="w-14 h-14 rounded-full object-cover ring-4 ring-blue-400" />
+      <div class="flex items-center gap-3">
+        <button id="themeToggle"
+          class="w-11 h-11 flex items-center justify-center rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors duration-150 shadow-sm"
+          aria-label="Toggle theme">
+          <i data-lucide="moon" id="themeIcon" class="w-5 h-5 text-slate-600 dark:text-slate-200"></i>
+        </button>
+        <button
+          class="flex items-center gap-2 px-4 h-11 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors duration-150 shadow-sm font-medium text-sm">
+          <i data-lucide="message-square" class="w-4 h-4"></i>
+          Feedback
+        </button>
+      </div>
+    </header>
+
+    <!-- ============ DASHBOARD TAB ============ -->
+    <section id="panel-dashboard" class="tab-panel fade-in">
+
+      <!-- Quick stats -->
+      <div class="grid grid-cols-1 gap-4 mb-6">
+        <div
+          class="bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 rounded-3xl shadow-sm px-6 py-6 flex items-center justify-between">
+          <div>
+            <p class="text-3xl font-bold text-slate-900 dark:text-white">45/60</p>
+            <p class="text-slate-400 dark:text-slate-300 mt-1">Attendance</p>
+          </div>
+          <div class="w-14 h-14 rounded-full bg-green-100 dark:bg-green-900/40 flex items-center justify-center">
+            <i data-lucide="clock" class="w-6 h-6 text-green-500"></i>
+          </div>
+        </div>
+
+        <div
+          class="bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 rounded-3xl shadow-sm px-6 py-6 flex items-center justify-between">
+          <div>
+            <p class="text-3xl font-bold text-slate-900 dark:text-white">3/5</p>
+            <p class="text-slate-400 dark:text-slate-300 mt-1">Assignment</p>
+          </div>
+          <div class="w-14 h-14 rounded-full bg-purple-100 dark:bg-purple-900/40 flex items-center justify-center">
+            <i data-lucide="graduation-cap" class="w-6 h-6 text-purple-500"></i>
+          </div>
+        </div>
+      </div>
+
+      <!-- Active course -->
+      <h3 class="text-2xl font-bold mb-4">Active Course</h3>
+
+      <div
+        class="rounded-3xl border border-slate-200 dark:border-slate-700 bg-blue-50/60 dark:bg-slate-800 overflow-hidden shadow-sm">
+        <div class="px-6 pt-6 flex items-start justify-between">
+          <h2 class="text-2xl font-bold text-slate-900 dark:text-white truncate pr-3">Modern Web Development</h2>
+          <span
+            class="shrink-0 px-4 py-1.5 rounded-full border border-blue-300 text-blue-500 dark:text-blue-300 dark:border-blue-400 text-sm font-semibold bg-white dark:bg-slate-900">ENROLLED</span>
+        </div>
+
+        <!-- Schedule badges -->
+        <div class="px-6 pt-5 flex flex-col gap-3">
+          <span
+            class="w-fit px-5 py-2.5 rounded-2xl border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-900 text-blue-400 dark:text-blue-300 text-base">Mon
+            12:00 PM – 02:00 PM</span>
+          <span
+            class="w-fit px-5 py-2.5 rounded-2xl border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-900 text-blue-400 dark:text-blue-300 text-base">Wed
+            12:00 PM – 02:00 PM</span>
+          <span
+            class="w-fit px-5 py-2.5 rounded-2xl border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-900 text-blue-400 dark:text-blue-300 text-base">Fri
+            12:00 PM – 02:00 PM</span>
+        </div>
+
+        <!-- Progress -->
+        <div class="px-6 pt-6">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-lg text-slate-500 dark:text-slate-300">Progress</span>
+            <span class="text-lg font-medium text-slate-600 dark:text-slate-200">32% Completed</span>
+          </div>
+          <div class="w-full h-2.5 rounded-full bg-slate-200 dark:bg-slate-600 overflow-hidden">
+            <div class="h-full rounded-full bg-green-500" style="width: 32%"></div>
+          </div>
+        </div>
+
+        <!-- Meta grid -->
+        <div class="px-6 pt-6 pb-6 grid grid-cols-2 gap-y-5 gap-x-3 text-slate-700 dark:text-slate-200">
+          <div class="flex items-center gap-2.5">
+            <i data-lucide="hash" class="w-5 h-5 text-slate-400 shrink-0"></i>
+            <span class="text-lg">Batch: <span class="text-slate-500 dark:text-slate-300">2</span></span>
+          </div>
+          <div class="flex items-center gap-2.5">
+            <i data-lucide="award" class="w-5 h-5 text-slate-400 shrink-0"></i>
+            <span class="text-lg">Roll: <span class="text-slate-500 dark:text-slate-300">000123</span></span>
+          </div>
+          <div class="flex items-center gap-2.5 min-w-0">
+            <i data-lucide="school" class="w-5 h-5 text-slate-400 shrink-0"></i>
+            <span class="text-lg truncate">Campus: <span
+                class="text-slate-500 dark:text-slate-300">Saylani...</span></span>
+          </div>
+          <div class="flex items-center gap-2.5">
+            <i data-lucide="map-pin" class="w-5 h-5 text-slate-400 shrink-0"></i>
+            <span class="text-lg">City: <span class="text-slate-500 dark:text-slate-300">Sukkur</span></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PAYMENT TAB ============ -->
+    <section id="panel-payment" class="tab-panel hidden">
+
+      <h3 class="text-2xl font-bold mb-4">Fee</h3>
+
+      <div
+        class="bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 rounded-3xl shadow-sm px-6 py-6 mb-6">
+        <div class="flex items-start justify-between mb-1">
+          <h4 class="text-2xl font-bold">Jul 2026</h4>
+          <span
+            class="px-4 py-1 rounded-full bg-green-100 dark:bg-green-900/40 text-green-600 dark:text-green-300 text-sm font-semibold">PAID</span>
+        </div>
+        <p class="text-slate-400 dark:text-slate-400 text-base mb-5">Due: 08-Jul-2026</p>
+
+        <div class="flex items-center justify-between text-lg mb-3">
+          <span class="text-slate-500 dark:text-slate-300">Amount:</span>
+          <span class="font-semibold">Rs: 1000 /-</span>
+        </div>
+        <div class="flex items-center justify-between text-lg mb-5">
+          <span class="text-slate-500 dark:text-slate-300">Type:</span>
+          <span class="font-semibold">Monthly</span>
+        </div>
+
+        <div class="flex items-center justify-between">
+          <div>
+            <span class="text-slate-500 dark:text-slate-300 text-lg">Voucher ID: </span>
+            <span class="font-semibold text-lg">000000000000</span>
+          </div>
+          <div class="relative">
+            <button id="copyBtn"
+              class="w-11 h-11 flex items-center justify-center rounded-xl border border-slate-200 dark:border-slate-600 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors duration-150">
+              <i data-lucide="copy" class="w-5 h-5 text-slate-600 dark:text-slate-300"></i>
+            </button>
+            <div id="copyTooltip"
+              class="hidden tooltip-pop absolute -top-10 right-0 bg-slate-900 text-white text-xs px-3 py-1.5 rounded-lg whitespace-nowrap">
+              Copied!</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Class Schedule stripe -->
+      <div
+        class="bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 rounded-3xl shadow-sm px-6 py-6 mb-6">
+        <div class="flex items-center gap-2.5 mb-5">
+          <i data-lucide="calendar" class="w-6 h-6"></i>
+          <h4 class="text-xl font-bold">Class Schedule</h4>
+        </div>
+        <div class="grid grid-cols-7 gap-2" id="weekStrip">
+          <!-- filled by JS -->
+        </div>
+      </div>
+
+      <!-- Segmented tabs -->
+      <div class="bg-slate-100 dark:bg-slate-700/50 rounded-2xl p-1.5 flex gap-1 mb-4">
+        <button
+          class="seg-btn flex-1 py-2.5 rounded-xl text-sm font-medium transition-all duration-200 text-slate-500 dark:text-slate-300"
+          data-seg="assignments">Assignments</button>
+        <button
+          class="seg-btn flex-1 py-2.5 rounded-xl text-sm font-medium transition-all duration-200 text-slate-500 dark:text-slate-300"
+          data-seg="quizzes">Quizzes</button>
+        <button
+          class="seg-btn flex-1 py-2.5 rounded-xl text-sm font-medium transition-all duration-200 text-slate-500 dark:text-slate-300"
+          data-seg="events">Events</button>
+      </div>
+
+      <div
+        class="bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 rounded-3xl shadow-sm px-6 py-10 flex items-center justify-center min-h-[100px]">
+        <p id="segContent" class="text-slate-400 dark:text-slate-400 text-lg text-center fade-in"></p>
+      </div>
+    </section>
+
+    <!-- ============ HOME TAB (placeholder) ============ -->
+    <section id="panel-home" class="tab-panel hidden">
+      <div
+        class="bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 rounded-3xl shadow-sm px-6 py-16 flex flex-col items-center justify-center text-center">
+        <i data-lucide="home" class="w-10 h-10 text-slate-300 mb-3"></i>
+        <p class="text-slate-400 dark:text-slate-400 text-lg">Your enrolled courses will appear here.</p>
+      </div>
+    </section>
+
+    <!-- ============ QUIZ TAB (placeholder) ============ -->
+    <section id="panel-quiz" class="tab-panel hidden">
+      <div
+        class="bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 rounded-3xl shadow-sm px-6 py-16 flex flex-col items-center justify-center text-center">
+        <i data-lucide="graduation-cap" class="w-10 h-10 text-slate-300 mb-3"></i>
+        <p class="text-slate-400 dark:text-slate-400 text-lg">No quizzes assigned yet.</p>
+      </div>
+    </section>
+
+    <!-- ============ PROGRESS TAB (placeholder) ============ -->
+    <section id="panel-progress" class="tab-panel hidden">
+      <div
+        class="bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 rounded-3xl shadow-sm px-6 py-16 flex flex-col items-center justify-center text-center">
+        <i data-lucide="book-open" class="w-10 h-10 text-slate-300 mb-3"></i>
+        <p class="text-slate-400 dark:text-slate-400 text-lg">Detailed progress reports coming soon.</p>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Bottom Nav -->
+  <nav
+    class="fixed bottom-0 left-0 right-0 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-700 pt-2 pb-2">
+    <div class="max-w-lg mx-auto grid grid-cols-5">
+      <button id="homebtn" class="nav-btn flex flex-col items-center gap-1 py-1" data-tab="home">
+        <span
+          class="nav-icon-wrap w-11 h-11 rounded-full flex items-center justify-center transition-colors duration-200">
+          <i data-lucide="home" class="nav-icon w-5 h-5 text-slate-400"></i>
+        </span>
+        <span class="nav-label text-xs text-slate-400 font-medium">Home</span>
+      </button>
+      <button class="nav-btn flex flex-col items-center gap-1 py-1" data-tab="dashboard">
+        <span
+          class="nav-icon-wrap w-11 h-11 rounded-full flex items-center justify-center transition-colors duration-200">
+          <i data-lucide="layout-dashboard" class="nav-icon w-5 h-5 text-slate-400"></i>
+        </span>
+        <span class="nav-label text-xs text-slate-400 font-medium">Dashboard</span>
+      </button>
+      <button class="nav-btn flex flex-col items-center gap-1 py-1" data-tab="payment">
+        <span
+          class="nav-icon-wrap w-11 h-11 rounded-full flex items-center justify-center transition-colors duration-200">
+          <i data-lucide="wallet" class="nav-icon w-5 h-5 text-slate-400"></i>
+        </span>
+        <span class="nav-label text-xs text-slate-400 font-medium">Payment</span>
+      </button>
+      <button class="nav-btn flex flex-col items-center gap-1 py-1" data-tab="quiz">
+        <span
+          class="nav-icon-wrap w-11 h-11 rounded-full flex items-center justify-center transition-colors duration-200">
+          <i data-lucide="graduation-cap" class="nav-icon w-5 h-5 text-slate-400"></i>
+        </span>
+        <span class="nav-label text-xs text-slate-400 font-medium">Quiz</span>
+      </button>
+      <button class="nav-btn flex flex-col items-center gap-1 py-1" data-tab="progress">
+        <span
+          class="nav-icon-wrap w-11 h-11 rounded-full flex items-center justify-center transition-colors duration-200">
+          <i data-lucide="book-open" class="nav-icon w-5 h-5 text-slate-400"></i>
+        </span>
+        <span class="nav-label text-xs text-slate-400 font-medium">Progress</span>
+      </button>
+    </div>
+  </nav>
+
+  <script>
+    lucide.createIcons();
+
+    /* ---------- Theme toggle ---------- */
+    const themeToggle = document.getElementById('themeToggle');
+    const themeIcon = document.getElementById('themeIcon');
+    themeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark');
+      const isDark = document.body.classList.contains('dark');
+      themeIcon.setAttribute('data-lucide', isDark ? 'sun' : 'moon');
+      lucide.createIcons();
+    });
+
+    /* ---------- Bottom nav tab switching ---------- */
+    const navButtons = document.querySelectorAll('.nav-btn');
+    const panels = document.querySelectorAll('.tab-panel');
+
+    function setActiveTab(tab) {
+      panels.forEach(p => p.classList.add('hidden'));
+      const activePanel = document.getElementById('panel-' + tab);
+      activePanel.classList.remove('hidden');
+      activePanel.classList.remove('fade-in');
+      void activePanel.offsetWidth; // restart animation
+      activePanel.classList.add('fade-in');
+
+      navButtons.forEach(btn => {
+        const iconWrap = btn.querySelector('.nav-icon-wrap');
+        const icon = btn.querySelector('.nav-icon');
+        const label = btn.querySelector('.nav-label');
+        if (btn.dataset.tab === tab) {
+          iconWrap.classList.add('bg-blue-600');
+          icon.classList.remove('text-slate-400');
+          icon.classList.add('text-white');
+          label.classList.remove('text-slate-400', 'font-medium');
+          label.classList.add('text-slate-900', 'dark:text-white', 'font-bold');
+        } else {
+          iconWrap.classList.remove('bg-blue-600');
+          icon.classList.add('text-slate-400');
+          icon.classList.remove('text-white');
+          label.classList.add('text-slate-400', 'font-medium');
+          label.classList.remove('text-slate-900', 'dark:text-white', 'font-bold');
+        }
+      });
+    }
+
+    navButtons.forEach(btn => {
+      btn.addEventListener('click', () => setActiveTab(btn.dataset.tab));
+    });
+
+    // default to dashboard tab
+    setActiveTab('dashboard');
+
+    /* ---------- Copy voucher ID ---------- */
+    const copyBtn = document.getElementById('copyBtn');
+    const copyTooltip = document.getElementById('copyTooltip');
+    copyBtn.addEventListener('click', () => {
+      navigator.clipboard.writeText('000000000000').catch(() => { });
+      copyTooltip.classList.remove('hidden');
+      setTimeout(() => copyTooltip.classList.add('hidden'), 1400);
+    });
+
+    /* ---------- Class schedule week strip ---------- */
+    const days = [
+      { label: 'Sun', num: 12, active: false },
+      { label: 'Mon', num: 13, active: true },
+      { label: 'Tue', num: 14, active: false },
+      { label: 'Wed', num: 15, active: true },
+      { label: 'Thu', num: 16, active: false },
+      { label: 'Fri', num: 17, active: true },
+      { label: 'Sat', num: 18, active: false },
+    ];
+    const weekStrip = document.getElementById('weekStrip');
+    weekStrip.innerHTML = days.map(d => `
+      <div class="flex flex-col items-center justify-center py-3 rounded-2xl border text-sm font-medium
+        ${d.active
+        ? 'bg-green-500 border-green-500 text-white font-bold'
+        : 'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-600 text-slate-500 dark:text-slate-300'}">
+        <span>${d.label}</span>
+        <span class="text-base">${d.num}</span>
+      </div>
+    `).join('');
+
+    /* ---------- Segmented tabs (Assignments / Quizzes / Events) ---------- */
+    const segButtons = document.querySelectorAll('.seg-btn');
+    const segContent = document.getElementById('segContent');
+    const segData = {
+      assignments: 'No pending assignments',
+      quizzes: 'No upcoming quizzes',
+      events: 'No upcoming events',
+    };
+
+    function setActiveSeg(seg) {
+      segButtons.forEach(b => {
+        if (b.dataset.seg === seg) {
+          b.classList.add('bg-white', 'dark:bg-slate-800', 'shadow-sm', 'text-slate-900', 'dark:text-white');
+          b.classList.remove('text-slate-500', 'dark:text-slate-300');
+        } else {
+          b.classList.remove('bg-white', 'dark:bg-slate-800', 'shadow-sm', 'text-slate-900', 'dark:text-white');
+          b.classList.add('text-slate-500', 'dark:text-slate-300');
+        }
+      });
+      segContent.classList.remove('fade-in');
+      void segContent.offsetWidth;
+      segContent.textContent = segData[seg];
+      segContent.classList.add('fade-in');
+    }
+
+    segButtons.forEach(b => b.addEventListener('click', () => setActiveSeg(b.dataset.seg)));
+    setActiveSeg('quizzes');
+
+
+
+    document.getElementById("homebtn").addEventListener("click", () => {
+      window.location.href = "dashboard.html";
+    });
+  </script>
+
+</body>
+
+</html>

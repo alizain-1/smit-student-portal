@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SMIT Student Portal - Login</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      background-color: #f8fafc;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 16px;
+    }
+
+    .wrapper {
+      width: 100%;
+      max-width: 420px;
+    }
+
+    /* Logo */
+    .logo-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+
+    .logo-svg {
+      width: 150px;
+      height: auto;
+    }
+
+    .portal-title {
+      margin-top: 8px;
+      font-size: 20px;
+      font-weight: 600;
+      color: #334155;
+      letter-spacing: 0.3px;
+    }
+
+    /* Tabs */
+    .tab-bar {
+      display: flex;
+      background-color: #f1f5f9;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 4px;
+      margin-bottom: 16px;
+    }
+
+    .tab-btn {
+      flex: 1;
+      padding: 10px 0;
+      border: none;
+      background: transparent;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 500;
+      color: #64748b;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .tab-btn:hover {
+      color: #334155;
+    }
+
+    .tab-btn.active {
+      background-color: #ffffff;
+      color: #1e293b;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+    }
+
+    /* Card */
+    .card {
+      background-color: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+      padding: 24px;
+    }
+
+    .card h2 {
+      font-size: 18px;
+      font-weight: 700;
+      color: #1e293b;
+      margin-bottom: 4px;
+    }
+
+    .card p.subtitle {
+      font-size: 13.5px;
+      color: #64748b;
+      line-height: 1.5;
+      margin-bottom: 24px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 14px;
+      font-weight: 500;
+      color: #334155;
+      margin-bottom: 6px;
+    }
+
+    .form-group label .required {
+      color: #2563eb;
+    }
+
+    .input-wrap {
+      position: relative;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 10px 14px;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      font-size: 14px;
+      color: #1e293b;
+      outline: none;
+      transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .form-group input:focus {
+      border-color: #3b82f6;
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+    }
+
+    .input-wrap input {
+      padding-right: 40px;
+    }
+
+    .toggle-eye {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #94a3b8;
+      display: flex;
+      align-items: center;
+      padding: 2px;
+      transition: color 0.15s ease;
+    }
+
+    .toggle-eye:hover {
+      color: #64748b;
+    }
+
+    .btn-primary {
+      width: 100%;
+      padding: 13px 0;
+      background-color: #1e40af;
+      color: #ffffff;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+    }
+
+    .btn-primary:hover {
+      background-color: #1e3a8a;
+    }
+
+    .btn-teacher {
+      width: 100%;
+      margin-top: 16px;
+      padding: 13px 0;
+      background-color: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      color: #334155;
+      cursor: pointer;
+      transition: background-color 0.15s ease;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+    }
+
+    .btn-teacher:hover {
+      background-color: #f8fafc;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="wrapper">
+    <!-- Logo -->
+    <div class="logo-section">
+      <svg class="logo-svg" viewBox="0 0 220 100" xmlns="http://www.w3.org/2000/svg">
+        <g transform="translate(95,2)">
+          <polygon points="20,0 40,9 20,18 0,9" fill="#f5a623" />
+          <rect x="18" y="9" width="4" height="10" fill="#f5a623" />
+        </g>
+        <text x="0" y="65" font-family="Arial, Helvetica, sans-serif" font-weight="800" font-size="52"
+          letter-spacing="1">
+          <tspan fill="#2b6cb0">S</tspan>
+          <tspan fill="#2b6cb0">M</tspan>
+          <tspan fill="#43a047">I</tspan>
+          <tspan fill="#2b6cb0">T</tspan>
+        </text>
+        <rect x="2" y="72" width="185" height="3" fill="#43a047" />
+        <text x="2" y="88" font-family="Arial, Helvetica, sans-serif" font-weight="600" font-size="10"
+          letter-spacing="0.5" fill="#4a5568">
+          SAYLANI MASS IT TRAINING
+        </text>
+      </svg>
+      <div class="portal-title">Student Portal</div>
+    </div>
+
+    <!-- Tabs -->
+    <div class="tab-bar">
+      <button class="tab-btn active" id="tabLogin">Login</button>
+      <button class="tab-btn" id="tabCreate">Create Password</button>
+    </div>
+
+    <!-- Login Card -->
+    <div class="card" id="loginCard">
+      <h2>Login</h2>
+      <p class="subtitle">Kindly provide the CNIC number and password used during SMIT course registration.</p>
+
+      <form id="loginForm">
+        <div class="form-group">
+          <label>CNIC <span class="required">*</span></label>
+          <input type="number" id="cnic" name="cnic" />
+        </div>
+
+        <div class="form-group">
+          <label>Password <span class="required">*</span></label>
+          <div class="input-wrap">
+            <input type="password" id="password" name="password" />
+            <button type="button" class="toggle-eye" id="togglePassword">
+              <!-- eye icon -->
+              <svg id="eyeIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8Z"></path>
+                <circle cx="12" cy="12" r="3"></circle>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <button type="submit" id="loginBtn" class="btn-primary">Login</button>
+      </form>
+    </div>
+
+    <!-- Create Password Card -->
+    <div class="card hidden" id="createCard">
+      <h2>Create Password</h2>
+      <p class="subtitle">Set a new password using your registered CNIC number.</p>
+
+      <form id="createForm">
+        <div class="form-group">
+          <label>CNIC <span class="required">*</span></label>
+          <input type="text" name="cnic2" />
+        </div>
+        <div class="form-group">
+          <label>New Password <span class="required">*</span></label>
+          <input type="password" name="newPassword" />
+        </div>
+        <button type="submit" class="btn-primary">Create Password</button>
+      </form>
+    </div>
+
+    <!-- Teacher login -->
+    <button class="btn-teacher" id="teacherBtn">Login as teacher</button>
+  </div>
+
+  <script>
+    // Tab switching
+    const tabLogin = document.getElementById('tabLogin');
+    const tabCreate = document.getElementById('tabCreate');
+    const loginCard = document.getElementById('loginCard');
+    const createCard = document.getElementById('createCard');
+
+    tabLogin.addEventListener('click', () => {
+      tabLogin.classList.add('active');
+      tabCreate.classList.remove('active');
+      loginCard.classList.remove('hidden');
+      createCard.classList.add('hidden');
+    });
+
+    tabCreate.addEventListener('click', () => {
+      tabCreate.classList.add('active');
+      tabLogin.classList.remove('active');
+      createCard.classList.remove('hidden');
+      loginCard.classList.add('hidden');
+    });
+
+    // Password show/hide toggle
+    const passwordInput = document.getElementById('password');
+    const toggleBtn = document.getElementById('togglePassword');
+    const eyeIcon = document.getElementById('eyeIcon');
+
+    const eyeOpenPath = `<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8Z"></path><circle cx="12" cy="12" r="3"></circle>`;
+    const eyeOffPath = `<path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-3.87 5.24"></path>
+      <path d="M6.61 6.61A18.5 18.5 0 0 0 1 12s4 8 11 8a9.13 9.13 0 0 0 4.24-.9"></path>
+      <path d="M14.12 14.12a3 3 0 1 1-4.24-4.24"></path>
+      <line x1="1" y1="1" x2="23" y2="23"></line>`;
+
+    toggleBtn.addEventListener('click', () => {
+      const isPassword = passwordInput.type === 'password';
+      passwordInput.type = isPassword ? 'text' : 'password';
+      eyeIcon.innerHTML = isPassword ? eyeOffPath : eyeOpenPath;
+    });
+
+    // Form submit handlers (prevent default / demo)
+    document.getElementById('loginForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      // Simulate a successful sign-in and load the dashboard
+      window.location.href = 'dashboard.html';
+    });
+
+    document.getElementById('createForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert('Password creation submitted (demo only)');
+    });
+
+    document.getElementById('teacherBtn').addEventListener('click', () => {
+      alert('Redirecting to teacher login (demo only)');
+    });
+
+
+    document.getElementById("loginBtn").addEventListener("click", (e) => {
+      e.preventDefault(); // Prevent form submission
+
+      const cnic = document.getElementById("cnic").value.trim();
+      const password = document.getElementById("password").value.trim();
+
+      if (cnic === "" || password === "") {
+        alert("Please enter both CNIC and Password.");
+        return;
+      }
+
+      // If both fields are filled, go to dashboard
+      window.location.href = "dashboard.html";
+    });
+  </script>
+
+</body>
+
+</html>
