@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>SMIT Trainer Portal - Login</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    background-color: #f8fafc;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 16px;
+  }
+  .wrapper { width: 100%; max-width: 420px; }
+  .logo-section { display: flex; flex-direction: column; align-items: center; margin-bottom: 24px; }
+  .logo-svg { width: 150px; height: auto; }
+  .portal-title { margin-top: 8px; font-size: 20px; font-weight: 600; color: #334155; letter-spacing: 0.3px; }
+  .card {
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    padding: 28px;
+  }
+  .card h2 { font-size: 18px; font-weight: 700; color: #1e293b; margin-bottom: 4px; }
+  .card p.subtitle { font-size: 13.5px; color: #64748b; line-height: 1.5; margin-bottom: 24px; }
+  .form-group { margin-bottom: 20px; }
+  .form-group label { display: block; font-size: 14px; font-weight: 500; color: #334155; margin-bottom: 6px; }
+  .form-group label .required { color: #2563eb; }
+  .input-wrap { position: relative; }
+  .form-group input {
+    width: 100%; padding: 10px 14px; border: 1px solid #cbd5e1; border-radius: 8px;
+    font-size: 14px; color: #1e293b; outline: none;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  }
+  .form-group input.error { border-color: #ef4444; }
+  .form-group input.error:focus { box-shadow: 0 0 0 3px rgba(239,68,68,0.15); }
+  .form-group input:focus { border-color: #3b82f6; box-shadow: 0 0 0 3px rgba(59,130,246,0.15); }
+  .input-wrap input { padding-right: 40px; }
+  .toggle-eye {
+    position: absolute; right: 12px; top: 50%; transform: translateY(-50%);
+    background: none; border: none; cursor: pointer; color: #94a3b8;
+    display: flex; align-items: center; padding: 2px; transition: color 0.15s ease;
+  }
+  .toggle-eye:hover { color: #64748b; }
+  .btn-primary {
+    width: 100%; padding: 13px 0; background-color: #1e40af; color: #ffffff;
+    font-size: 14px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase;
+    border: none; border-radius: 8px; cursor: pointer; transition: background-color 0.2s ease;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+  }
+  .btn-primary:hover { background-color: #1e3a8a; }
+  .forgot-link {
+    display: block; text-align: center; margin-top: 16px; font-size: 13.5px;
+    color: #2563eb; text-decoration: none; cursor: pointer;
+  }
+  .forgot-link:hover { text-decoration: underline; }
+  .btn-student {
+    width: 100%; margin-top: 16px; padding: 13px 0; background-color: #ffffff;
+    border: 1px solid #e2e8f0; border-radius: 8px; font-size: 14px; font-weight: 500;
+    color: #334155; cursor: pointer; transition: background-color 0.15s ease;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+  }
+  .btn-student:hover { background-color: #f8fafc; }
+</style>
+</head>
+<body>
+
+  <div class="wrapper">
+    <div class="logo-section">
+      <svg class="logo-svg" viewBox="0 0 220 100" xmlns="http://www.w3.org/2000/svg">
+        <g transform="translate(95,2)">
+          <polygon points="20,0 40,9 20,18 0,9" fill="#f5a623" />
+          <rect x="18" y="9" width="4" height="10" fill="#f5a623" />
+        </g>
+        <text x="0" y="65" font-family="Arial, Helvetica, sans-serif" font-weight="800" font-size="52" letter-spacing="1">
+          <tspan fill="#2b6cb0">S</tspan><tspan fill="#2b6cb0">M</tspan><tspan fill="#43a047">I</tspan><tspan fill="#2b6cb0">T</tspan>
+        </text>
+        <rect x="2" y="72" width="185" height="3" fill="#43a047" />
+        <text x="2" y="88" font-family="Arial, Helvetica, sans-serif" font-weight="600" font-size="10" letter-spacing="0.5" fill="#4a5568">
+          SAYLANI MASS IT TRAINING
+        </text>
+      </svg>
+      <div class="portal-title">Trainer Portal</div>
+    </div>
+
+    <div class="card">
+      <h2>Login</h2>
+      <p class="subtitle">Kindly provide your email and password to access the trainer portal.</p>
+
+      <form id="loginForm" novalidate>
+        <div class="form-group">
+          <label>Email <span class="required">*</span></label>
+          <input type="email" id="email" name="email" />
+        </div>
+
+        <div class="form-group">
+          <label>Password <span class="required">*</span></label>
+          <div class="input-wrap">
+            <input type="password" id="password" name="password" />
+            <button type="button" class="toggle-eye" id="togglePassword">
+              <svg id="eyeIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8Z"></path>
+                <circle cx="12" cy="12" r="3"></circle>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <button type="submit" class="btn-primary">Login</button>
+        <a class="forgot-link" id="forgotLink">Forgot Password?</a>
+      </form>
+    </div>
+
+    <button class="btn-student" id="studentBtn">Login as student</button>
+  </div>
+
+  <script>
+    const passwordInput = document.getElementById('password');
+    const toggleBtn = document.getElementById('togglePassword');
+    const eyeIcon = document.getElementById('eyeIcon');
+
+    const eyeOpenPath = `<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8Z"></path><circle cx="12" cy="12" r="3"></circle>`;
+    const eyeOffPath = `<path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-3.87 5.24"></path>
+      <path d="M6.61 6.61A18.5 18.5 0 0 0 1 12s4 8 11 8a9.13 9.13 0 0 0 4.24-.9"></path>
+      <path d="M14.12 14.12a3 3 0 1 1-4.24-4.24"></path>
+      <line x1="1" y1="1" x2="23" y2="23"></line>`;
+
+    toggleBtn.addEventListener('click', () => {
+      const isPassword = passwordInput.type === 'password';
+      passwordInput.type = isPassword ? 'text' : 'password';
+      eyeIcon.innerHTML = isPassword ? eyeOffPath : eyeOpenPath;
+    });
+
+    document.getElementById('loginForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const email = document.getElementById('email');
+      let valid = true;
+      [email, passwordInput].forEach(field => {
+        if (!field.value.trim()) {
+          field.classList.add('error');
+          valid = false;
+        } else {
+          field.classList.remove('error');
+        }
+      });
+      if (!valid) return;
+      // Simulate successful sign-in
+      window.location.href = 'trainer-portal.html';
+    });
+
+    [document.getElementById('email'), passwordInput].forEach(field => {
+      field.addEventListener('input', () => field.classList.remove('error'));
+    });
+
+    document.getElementById('forgotLink').addEventListener('click', () => {
+      alert('Password reset flow (demo only)');
+    });
+
+    document.getElementById('studentBtn').addEventListener('click', () => {
+      window.location.href = 'index.html';
+    });
+  </script>
+
+</body>
+</html>

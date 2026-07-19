@@ -170,16 +170,27 @@
   </div>
 
   <!-- Bottom Nav -->
-  <nav
-    class="fixed bottom-0 left-0 right-0 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-700 pt-3 pb-2">
-    <div class="max-w-lg mx-auto flex flex-col items-center">
+<nav class="fixed bottom-0 left-0 right-0 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-700 py-3">
+  <div class="max-w-lg mx-auto flex items-center justify-between px-6">
+
+    <!-- Logout Button -->
+    <button id="logoutBtn"
+      class="flex items-center gap-2 px-4 py-3 rounded-xl bg-red-500 hover:bg-red-600 text-white font-medium transition active:scale-95">
+      <i data-lucide="log-out" class="w-5 h-5"></i>
+      Logout
+    </button>
+
+    <!-- Home -->
+    <div class="flex flex-col items-center">
       <button
-        class="w-14 h-14 rounded-full bg-blue-600 hover:bg-blue-700 flex items-center justify-center shadow-md transition-colors duration-150 active:scale-95">
+        class="w-14 h-14 rounded-full bg-blue-600 hover:bg-blue-700 flex items-center justify-center shadow-md transition active:scale-95">
         <i data-lucide="home" class="w-6 h-6 text-white"></i>
       </button>
       <span class="mt-1 text-sm font-medium text-slate-700 dark:text-slate-200">Home</span>
     </div>
-  </nav>
+
+  </div>
+</nav>
 
   <script>
     lucide.createIcons();
@@ -229,6 +240,21 @@
     document.getElementById('viewDetailsBtn').addEventListener('click', () => {
       window.open("course-details.html", "_self");
     });
+
+
+    // Logout
+document.getElementById("logoutBtn").addEventListener("click", () => {
+  const confirmLogout = confirm("Are you sure you want to logout?");
+
+  if (confirmLogout) {
+    // Remove login session (if you use one)
+    localStorage.removeItem("loggedIn");
+    sessionStorage.clear();
+
+    // Redirect to login page
+    window.location.href = "index.html"; // Change if your login page has another name
+  }
+});
   </script>
 
 </body>
